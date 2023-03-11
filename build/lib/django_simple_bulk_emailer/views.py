@@ -78,6 +78,7 @@ def get_universal_page_directory():
 
 
 def send_email(email_content, list_slug='', subscriber_key='', subject='', text_template='', html_template='', to_address=''):
+    print("We are in in send email")
     try:
         from_address = settings.EMAILER_FROM_ADDRESS
     except AttributeError:
@@ -122,8 +123,9 @@ def send_email(email_content, list_slug='', subscriber_key='', subject='', text_
     )
     message.attach_alternative(html_email, 'text/html')
     # try:
+    print("We are in just before sending")
     message.send(
-            fail_silently=True,
+            fail_silently=False,
         )
     # except IOError:
     #     pass

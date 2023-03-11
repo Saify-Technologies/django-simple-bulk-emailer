@@ -31,11 +31,13 @@ class Command(BaseCommand):
     help = 'Sends bulk email'
 
     def handle(self, *args, **options):
+        print("We are in bulk email command")
         subscriptions = Subscription.objects.order_by(
             'sort_order',
         )
         if subscriptions:
             for subscription in subscriptions:
+                print("We are in subscription")
                 email_instance = subscription.get_email_class().objects.filter(
                     sendable=True,
                 ).filter(
@@ -46,6 +48,7 @@ class Command(BaseCommand):
                 if email_instance:
                     break
             if email_instance:
+                print("We are in email instances")
                 ''' Make unavailable to other instances of the function '''
                 email_instance.sendable = False
                 email_instance.save()
@@ -76,6 +79,7 @@ class Command(BaseCommand):
                 ''' Set number_sent at 0 '''
                 number_sent = 0
                 for subscriber in subscriber_list:
+                    print("We are in before sending")
                     ''' Get subscriber-specific information '''
                     tracking_image = reverse(
                         'django_simple_bulk_emailer:opened_email',
