@@ -121,12 +121,12 @@ def send_email(email_content, list_slug='', subscriber_key='', subject='', text_
         reply_to=[reply_address],
     )
     message.attach_alternative(html_email, 'text/html')
-    try:
-        message.send(
-            fail_silently=True,
+    # try:
+    message.send(
+            fail_silently=False,
         )
-    except IOError:
-        pass
+    # except IOError:
+    #     pass
 
 
 def get_subscriptions(request):
