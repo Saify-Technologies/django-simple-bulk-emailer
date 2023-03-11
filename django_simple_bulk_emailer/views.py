@@ -62,7 +62,7 @@ from .models import (
     Subscription,
 )
 
-
+print("this is checking that this code is working")
 def get_universal_email_directory():
     try:
         return settings.EMAILER_EMAIL_TEMPLATES
@@ -78,6 +78,7 @@ def get_universal_page_directory():
 
 
 def send_email(email_content, list_slug='', subscriber_key='', subject='', text_template='', html_template='', to_address=''):
+    print("We are in send email")
     try:
         from_address = settings.EMAILER_FROM_ADDRESS
     except AttributeError:
@@ -125,6 +126,7 @@ def send_email(email_content, list_slug='', subscriber_key='', subject='', text_
     message.send(
             fail_silently=False,
         )
+    print("We are after send email")
     # except IOError:
     #     pass
 
