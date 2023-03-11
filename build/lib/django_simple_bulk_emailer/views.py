@@ -62,7 +62,7 @@ from .models import (
     Subscription,
 )
 
-
+print("We are in main view..")
 def get_universal_email_directory():
     try:
         return settings.EMAILER_EMAIL_TEMPLATES
@@ -121,12 +121,12 @@ def send_email(email_content, list_slug='', subscriber_key='', subject='', text_
         reply_to=[reply_address],
     )
     message.attach_alternative(html_email, 'text/html')
-    try:
-        message.send(
+    # try:
+    message.send(
             fail_silently=True,
         )
-    except IOError:
-        pass
+    # except IOError:
+    #     pass
 
 
 def get_subscriptions(request):
