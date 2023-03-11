@@ -330,6 +330,7 @@ def email_preview(request, list_slug, pk):
                 email_instance.sending = True
                 email_instance.sent = True
                 email_instance.save()
+                print("WE are in post ..")
                 return list_return
             if 'return_list' in request.POST:
                 return list_return
